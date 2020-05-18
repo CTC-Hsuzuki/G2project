@@ -20,30 +20,6 @@ db.settings({
   timestampsInSnapshots: true,
 });
 
-// リフレッシュするたびにDBへ送信される。
-db.collection("songA")
-  .add({
-    device: [2, 3, 1],
-  })
-  .then((doc) => {
-    console.log(`追加に成功しました (${doc.id})`);
-  })
-  .catch((error) => {
-    console.log(`追加に失敗しました (${error})`);
-  });
-
-// // リフレッシュするたびにDBへ送信される。
-// db.collection("songA")
-//   .add({
-//     age: 28,
-//   })
-//   .then((doc) => {
-//     console.log(`追加に成功しました (${doc.id})`);
-//   })
-//   .catch((error) => {
-//     console.log(`追加に失敗しました (${error})`);
-//   });
-
 // 配列をDBへ格納
 // db.collection("users")
 //   .get()

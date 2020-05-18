@@ -13,11 +13,42 @@ function showPassageA() {
   var sum = 0; //constだとfor文に反映されない
   for (let index = 0; index < 100; index++) {
     randomNumber[index] = Math.floor(Math.random() * 10); //1デバイス1秒あたり0~10回
-    console.log(randomNumber); //100デバイス1秒ごとの生成データ
+    // console.log(randomNumber); //100デバイス1秒ごとの生成データ
     sum += randomNumber[index];
     console.log(sum);
     //    console.log(sum);　//100デバイス1秒ごとの生成データの累計
   }
+  console.log(randomNumber); //1秒ごとの配列
+  // リフレッシュするたびにDBへ送信される。
+  db.collection("songA.01")
+    .add({
+      device: randomNumber,
+    })
+    .then((doc) => {
+      console.log(`追加に成功しました (${doc.id})`);
+    })
+    .catch((error) => {
+      console.log(`追加に失敗しました (${error})`);
+    });
+
+  // データを受信して、配列に加える。
+  // 配列をDBへ格納
+  // db.collection("users")
+  //   .get()
+  //   .then(function (querySnapshot) {
+  //     querySnapshot.forEach(function (doc) {
+  //       console.log(doc.id, " => ", doc.data());
+  //       var i = [];
+  //       i = doc.data(); //コレクション
+  //       console.log(i["ID"]);
+  //       console.log(i["pass"]);
+  //     });
+  //   });
+  // for (let index = 0; index < 100; index++) {
+  //   sum += randomNumber[index];
+  //   console.log(sum);
+  // }
+
   kousinnA += sum;
   document.getElementById("countA").innerHTML = kousinnA;
 }
