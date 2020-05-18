@@ -20,24 +20,26 @@ db.settings({
   timestampsInSnapshots: true,
 });
 
-db.collection("users")
-  .get()
-  .then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      console.log(doc.id, " => ", doc.data());
-      var i = [];
-      i = doc.data(); //コレクション
-      console.log(i["ID"]);
-      console.log(i["pass"]);
-    });
-  });
-
 //画面遷移
 function syouninn() {
-  window.open("./count.html", "_blank"); // 新しいタブを開き、ページを表示
-}
-
-function onButtonClick() {
-  var x = document.forms.id_form1.id_textBox.value;
-  console.log(x);
+  var x = document.forms.id_form1.id_textbox.value;
+  var y = document.forms.id_form2.pass_textbox.value;
+  console.log("input ID:" + x);
+  console.log("input pass:" + y);
+  db.collection("users")
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        // console.log(doc.id, " => ", doc.data());
+        var i = [];
+        i = doc.data(); //コレクション
+        console.log("ID:" + i["ID"]);
+        console.log("pass:" + i["pass"]);
+        if (i["ID"] == x && i["pass"] == y) {
+          window.open("./count.html", "_blank"); // 新しいタブを開き、ページを表示
+        } else {
+          document.getElementById("output").innerText = "Failed";
+        }
+      });
+    });
 }
