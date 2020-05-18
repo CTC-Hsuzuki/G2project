@@ -1,0 +1,76 @@
+/* 全てに適用 */
+html,
+body {
+  background: black;
+  /* height:100%; */
+  /* overflow: hidden; */
+  /* font-size:16px; */
+}
+
+/* 2画面に分けるflexbox */
+.container {
+  display: flex;
+  /* background-color: coral; */
+  /* width: 1000px; */
+}
+
+.song {
+  height: 900px;
+}
+
+/* 左と右（曲Aと曲B */
+.songA {
+  /* background-color: pink; */
+  flex: 1;
+  color: white;
+}
+
+.songB {
+  /* background-color: skyblue; */
+  flex: 1;
+  color: white;
+}
+
+.PassageArea {
+  font-weight: bold;
+  color: orange;
+  width: 100%;
+  /* position: absolute; */
+  text-align: center;
+  margin-top: 300px;
+}
+
+.count {
+  font-style: monospace;
+  font-weight: bold;
+  color: white;
+  font-size: 100px;
+  width: 100%;
+  /* position: absolute; */
+  text-align: center;
+}
+
+/* 
+#info{
+	font-weight: bold;
+	color: white;
+	width:100%;
+	position: absolute;
+	text-align: center;
+} */
+
+footer {
+  color: white;
+}
+
+#foo {
+  color: white;
+}
+
+.ID {
+  color: white;
+}
+
+#output {
+  color: white;
+}
