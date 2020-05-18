@@ -1,7 +1,8 @@
 var PassSec; // 秒数カウント用変数
 
 const randomNumber = [];
-var kousinn = 0;
+var kousinnA = 0;
+var kousinnB = 0;
 
 // 繰り返し処理の中身、１秒毎に行われる処理
 function showPassageA() {
@@ -17,14 +18,14 @@ function showPassageA() {
     console.log(sum);
     //    console.log(sum);　//100デバイス1秒ごとの生成データの累計
   }
-  kousinn += sum;
-  document.getElementById("countA").innerHTML = kousinn;
+  kousinnA += sum;
+  document.getElementById("countA").innerHTML = kousinnA;
 }
 
 // 繰り返し処理の開始、Startボタン
 function startShowingA() {
   PassSec = 0; // カウンタのリセット
-  kousinn = 0;
+  kousinnA = 0;
   PassageID = setInterval("showPassageA()", 1000); // タイマーをセット(1000ms間隔)
   document.getElementById("Astart").disabled = true; // 開始ボタンの無効化
 }
@@ -49,14 +50,14 @@ function showPassageB() {
     sum += randomNumber[index];
     //    console.log(sum);　//100デバイス1秒ごとの生成データの累計
   }
-  kousinn += sum;
-  document.getElementById("countB").innerHTML = kousinn;
+  kousinnB += sum;
+  document.getElementById("countB").innerHTML = kousinnB;
 }
 
 // 繰り返し処理の開始、Startボタン
 function startShowingB() {
   PassSec = 0; // カウンタのリセット
-  kousinn = 0;
+  kousinnB = 0;
   PassageID = setInterval("showPassageB()", 1000); // タイマーをセット(1000ms間隔)
   document.getElementById("Bstart").disabled = true; // 開始ボタンの無効化
 }
