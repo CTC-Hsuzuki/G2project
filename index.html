@@ -1,55 +1,46 @@
+<!-- デプロイの流れ→　 firebase login --no-localhost → firebase init→　firebase use g2app-c8658 → firebase serve→　firebase deploy --only hosting-->
 <!DOCTYPE html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ログイン画面</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理者画面</title>
-    <!-- cssとの連携 -->
-    <link rel="stylesheet" href="style.css"> 
+  <body>
+    <header>
+      <img src="https://source.unsplash.com/random/100x50" alt="" />
+      <h1 class="foo">管理者認証</h1>
+    </header>
+    <hr />
+    <main>
+      <form id="id_form1">
+        <label class="ID" for="ID">ID:</label>
+        <input class="hako" id="id_textBox" type="ID" placeholder="123456789" />
+      </form>
+      <form name="form1" id="id_form1" action="">
+        <label class="ID" for="password">Password:</label>
+        <input class="hako" id="pass_textbox" type="password" name="" id="" />
+      </form>
 
-</head>
-<body style="margin: 0;"></body>
-    <div class="container">
-        <div class="song songA">
-            Song A
-            <button id="Astart" onclick="startShowingA()">Start</button>
-            <button id="Astop" onclick="stopShowingA()">Stop</button>              
+      <button id="baz" onclick="syouninn()">Log In</button>
 
-            <div id="PassageAreaA" class="PassageArea">ここにカウントが表示されます。</div>
-            <div id="countA" class="count">0</div>
-            <!-- <div id="console_log"></div>
-            <div id="ransuu">ここに表示</div> -->
+      <!-- 以下、Firebase関連 -->
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
 
-        </div>
+      <!-- <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script> -->
+      <!-- cloud firestoreを使う -->
+      <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+      <script src="index.js"></script>
+    </main>
 
-        
-        <div class="song songB">
-            Song B
-            <button id="Bstart" onclick="startShowingB()">Start</button>
-            <button id="Bstop" onclick="stopShowingB()">Stop</button>
-            <div id="PassageAreaB" class="PassageArea">ここにカウントが表示されます。</div>
-            <div id="countB" class="count">0</div>
-        </div>
-    </div> 
-
-
+    <hr />
     <footer>
-        <small>
-            @ 2020 G2group
-        </small>
+      <small>
+        @ 2020 G2group
+      </small>
     </footer>
-
-    
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
-
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script> -->
-    <!-- cloud firestoreを使う -->
-   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
-
-   <script src="index.js"></script>
-   <script src="random.js"></script>
-   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-</body>
+  </body>
 </html>

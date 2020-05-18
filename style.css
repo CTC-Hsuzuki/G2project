@@ -63,13 +63,17 @@ footer {
   color: white;
 }
 
-#foo {
+.foo {
   color: white;
 }
 
 .ID {
   color: white;
 }
+
+/* .hako {
+  margin-left: 200px;
+} */
 
 #output {
   color: white;

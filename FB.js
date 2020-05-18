@@ -1,4 +1,8 @@
-// 以下、Firebase関連
+// //画面遷移
+// function syouninn() {
+//   window.open("./index.html", "_blank"); // 新しいタブを開き、ページを表示
+// }
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDb7jp63S9t7DsBtDk36kxn_xnQTnnkRMw",
@@ -20,24 +24,14 @@ db.settings({
   timestampsInSnapshots: true,
 });
 
-db.collection("users")
-  .get()
-  .then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      console.log(doc.id, " => ", doc.data());
-      var i = [];
-      i = doc.data(); //コレクション
-      console.log(i["ID"]);
-      console.log(i["pass"]);
-    });
-  });
-
-//画面遷移
-function syouninn() {
-  window.open("./count.html", "_blank"); // 新しいタブを開き、ページを表示
-}
-
-function onButtonClick() {
-  var x = document.forms.id_form1.id_textBox.value;
-  console.log(x);
-}
+// db.collection("users")
+//   .get()
+//   .then(function (querySnapshot) {
+//     querySnapshot.forEach(function (doc) {
+//       console.log(doc.id, " => ", doc.data());
+//       var i = [];
+//       i = doc.data(); //コレクション
+//       console.log(i["ID"]);
+//       console.log(i["pass"]);
+//     });
+//   });
