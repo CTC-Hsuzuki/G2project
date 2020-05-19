@@ -32,7 +32,8 @@ function syouninn() {
       querySnapshot.forEach(function (doc) {
         // console.log(doc.id, " => ", doc.data());
         var i = [];
-        i = doc.data(); //コレクション
+        i = doc.data(); //コレクション全体を獲得
+        // console.log(i);
         console.log("ID:" + i["ID"]);
         console.log("pass:" + i["pass"]);
         if (i["ID"] == x && i["pass"] == y) {
