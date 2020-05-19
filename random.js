@@ -1,7 +1,6 @@
 var PassSec; // 秒数カウント用変数
 
 const randomNumber = [];
-const importNumber = [];
 var kousinnA = 0;
 var kousinnB = 0;
 
@@ -25,7 +24,7 @@ function showPassageA() {
     .set({
       device: randomNumber, //ID:Deviceで入れている、フィールド1つに100個
     });
-  console.log("Firebaseへの追加:", randomNumber);
+  console.log("SongA Firebaseへの追加:", randomNumber);
 
   // "songA"コレクションの"sec"ドキュメントを受信して、配列に加える。
   db.collection("songA")
@@ -36,7 +35,7 @@ function showPassageA() {
       i = doc.data()["device"]; //取得時にフィールドを除外したい。
 
       if (doc.exists) {
-        console.log("Firebaseから取得:", i);
+        console.log("SongA Firebaseから取得:", i);
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -79,16 +78,49 @@ function showPassageB() {
   PassSec++; // カウントアップ
   var msg = "ボタンを押してから " + PassSec + "秒が経過しました。"; // 表示文作成
   document.getElementById("PassageAreaB").innerHTML = msg; // 表示更新
+  console.log("<------------経過秒数:" + PassSec + "秒------------>");
 
   var sum = 0;
   for (let index = 0; index < 100; index++) {
     randomNumber[index] = Math.floor(Math.random() * 10); //1デバイス1秒あたり0~10回
-    //   console.log(randomNumber) //100デバイス1秒ごとの生成データ
-    sum += randomNumber[index];
-    //    console.log(sum);　//100デバイス1秒ごとの生成データの累計
   }
-  kousinnB += sum;
-  document.getElementById("countB").innerHTML = kousinnB;
+  console.log("乱数の生成（100デバイス分のデータ）:" + randomNumber); //1秒ごとの配列
+
+  // 1秒ごとにに"songB"コレクションの"sec"ドキュメントへ送信される。
+  db.collection("songB")
+    .doc("sec" + PassSec)
+    .set({
+      device: randomNumber, //ID:Deviceで入れている、フィールド1つに100個
+    });
+  console.log("SongB Firebaseへの追加:", randomNumber);
+
+  // "songB"コレクションの"sec"ドキュメントを受信して、配列に加える。
+  db.collection("songB")
+    .doc("sec" + PassSec)
+    .get()
+    .then(function (doc) {
+      var i = [];
+      i = doc.data()["device"]; //取得時にフィールドを除外したい。
+
+      if (doc.exists) {
+        console.log("SongB Firebaseから取得:", i);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+
+      //取得した1秒間100デバイス分のデータを累計：単位累計値
+      for (let index = 0; index < 100; index++) {
+        sum += i[index];
+        // console.log(sum); //100デバイス1秒ごとの生成データの累計
+      }
+      console.log("1秒間の累計値（単位累計値）:" + sum);
+
+      //単位累計値を加算更新
+      kousinnB += sum;
+      console.log("単位累計値の合計:" + kousinnB);
+      document.getElementById("countB").innerHTML = kousinnB;
+    });
 }
 
 // 繰り返し処理の開始、Startボタン
