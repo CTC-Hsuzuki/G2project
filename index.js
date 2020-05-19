@@ -1,4 +1,4 @@
-// 以下、Firebase関連
+// Firebase関連
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDb7jp63S9t7DsBtDk36kxn_xnQTnnkRMw",

@@ -32,3 +32,5 @@ db.settings({
 //       console.log(i["pass"]);
 //     });
 //   });
+
+// console.log(document.getElementById("PassageAreaA").innerHTML);

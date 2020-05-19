@@ -19,20 +19,20 @@ function showPassageA() {
     //    console.log(sum);　//100デバイス1秒ごとの生成データの累計
   }
   console.log(randomNumber); //1秒ごとの配列
-  // リフレッシュするたびにDBへ送信される。
-  db.collection("songA.01")
-    .add({
+  // リフレッシュするたびに"songA"コレクションの"sec"ドキュメントへ送信される。add()はdocumentIDが自動生成される。
+  db.collection("songA")
+    .doc("sec" + PassSec)
+    .set({
       device: randomNumber,
     })
-    .then((doc) => {
-      console.log(`追加に成功しました (${doc.id})`);
+    .then(function () {
+      console.log("Document successfully written!");
     })
-    .catch((error) => {
-      console.log(`追加に失敗しました (${error})`);
+    .catch(function (error) {
+      console.error("Error writing document: ", error);
     });
 
-  // データを受信して、配列に加える。
-  // 配列をDBへ格納
+  // "songA"コレクションの"sec"ドキュメントを受信して、配列に加える。
   // db.collection("users")
   //   .get()
   //   .then(function (querySnapshot) {
