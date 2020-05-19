@@ -7,6 +7,37 @@ body {
   /* font-size:16px; */
 }
 
+main {
+  margin-left: 20px;
+}
+
+/* ------------index.html-------------- */
+/* class:. */
+.foo {
+  color: white;
+}
+
+.ID {
+  color: white;
+}
+
+.hako {
+  width: 150px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ID:# */
+#login {
+  margin-top: 10px;
+}
+
+#output {
+  margin-top: 10px;
+  color: white;
+}
+
+/*---------------count.html------------  */
 /* 2画面に分けるflexbox */
 .container {
   display: flex;
@@ -60,21 +91,5 @@ body {
 } */
 
 footer {
-  color: white;
-}
-
-.foo {
-  color: orange;
-}
-
-.ID {
-  color: white;
-}
-
-/* .hako {
-  margin-left: 200px;
-} */
-
-#output {
   color: white;
 }
