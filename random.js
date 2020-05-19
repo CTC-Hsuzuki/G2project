@@ -10,7 +10,7 @@ function showPassageA() {
   PassSec++; // カウントアップ
   var msg = "ボタンを押してから " + PassSec + "秒が経過しました。"; // 表示文作成
   document.getElementById("PassageAreaA").innerHTML = msg; // 表示更新
-  console.log("<------------経過秒数:" + PassSec + "------------>");
+  console.log("<------------経過秒数:" + PassSec + "秒------------>");
 
   var sum = 0; //constだとfor文に反映されない
   for (let index = 0; index < 100; index++) {
@@ -24,26 +24,8 @@ function showPassageA() {
     .doc("sec" + PassSec)
     .set({
       device: randomNumber, //ID:Deviceで入れている、フィールド1つに100個
-    })
-    .then(function () {
-      console.log("Firebaseへの追加:", randomNumber);
     });
-
-
-
-    var num = 100
-    console.log(num);
-
-  
-    .then((num) => {
-    setTimeout(function(){num += 200}, 0);
-    console.log(num);
-    })
-    .then((num) => {
-    console.log(num);
-    })
-    
-
+  console.log("Firebaseへの追加:", randomNumber);
 
   // "songA"コレクションの"sec"ドキュメントを受信して、配列に加える。
   db.collection("songA")
@@ -65,10 +47,11 @@ function showPassageA() {
         sum += i[index];
         // console.log(sum); //100デバイス1秒ごとの生成データの累計
       }
-      console.log("1秒間の累計値:" + sum);
+      console.log("1秒間の累計値（単位累計値）:" + sum);
 
       //単位累計値を加算更新
       kousinnA += sum;
+      console.log("単位累計値の合計:" + kousinnA);
       document.getElementById("countA").innerHTML = kousinnA;
     });
   // .catch(function (error) {
